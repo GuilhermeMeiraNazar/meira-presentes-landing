@@ -1,0 +1,12 @@
+{
+  "name": "meira-presentes-landing",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/convert-images.mjs",
+    "convert-images": "node scripts/convert-images.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.33.5"
+  }
+}
