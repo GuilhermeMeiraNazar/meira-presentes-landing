@@ -3,10 +3,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/convert-images.mjs",
-    "convert-images": "node scripts/convert-images.mjs"
+    "build": "npm run build:css && node scripts/convert-images.mjs",
+    "convert-images": "node scripts/convert-images.mjs",
+    "build:css": "sass --no-source-map --style=expanded styles/main.scss style.css",
+    "watch:css": "sass --no-source-map --watch styles/main.scss style.css"
   },
   "dependencies": {
     "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "sass": "^1.108.2"
   }
 }

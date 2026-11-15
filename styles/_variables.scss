@@ -1,0 +1,26 @@
+// Pontos de quebra (mesmo padrão $bp-* do CRM Flow, aqui em max-width pois o CSS é desktop-first).
+$bp-lg: 1000px;
+$bp-md: 800px;
+$bp-sm: 620px;
+
+$maxw: 1240px;
+
+// Paleta do logo: vermelho profundo + dourado. Expostas como variáveis CSS no :root.
+:root {
+  --red-900: #4a0505;
+  --red-800: #6b0a0a;
+  --red-700: #8c0b0b;
+  --gold-300: #f3d493;
+  --gold-400: #e4b65e;
+  --gold-500: #cf9b3d;
+  --gold-700: #9a6a1c;
+  --cream: #fbf6ee;
+  --cream-2: #f3ead9;
+  --ink: #2a1210;
+  --muted: #7a625c;
+
+  --serif: "Playfair Display", "Times New Roman", serif;
+  --sans: "Montserrat", system-ui, sans-serif;
+  --gold-grad: linear-gradient(135deg, #f3d493 0%, #cf9b3d 45%, #f0cf88 70%, #b9852a 100%);
+  --maxw: #{$maxw};
+}

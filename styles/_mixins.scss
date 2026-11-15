@@ -1,0 +1,10 @@
+@use 'variables' as *;
+
+@mixin down($bp) { @media (max-width: $bp) { @content; } }
+
+@mixin gold-text {
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

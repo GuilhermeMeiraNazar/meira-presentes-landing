@@ -1,0 +1,46 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.product-grid {
+  position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  @include down($bp-lg) { grid-template-columns: repeat(2, 1fr); }
+  @include down($bp-sm) { grid-template-columns: 1fr; }
+
+  &--3 {
+    grid-template-columns: repeat(3, 1fr);
+    @include down($bp-lg) { grid-template-columns: repeat(2, 1fr); }
+    @include down($bp-sm) { grid-template-columns: 1fr; }
+  }
+  // 5 cards: evita um card sozinho na última linha no desktop
+  &--5 {
+    grid-template-columns: repeat(5, 1fr); gap: 20px;
+    .card h3 { font-size: 19px; }
+    @include down($bp-lg) {
+      grid-template-columns: repeat(2, 1fr); gap: 24px;
+      .card:last-child { grid-column: 1 / -1; max-width: calc(50% - 12px); justify-self: center; }
+    }
+    @include down($bp-sm) {
+      grid-template-columns: 1fr;
+      .card:last-child { max-width: none; }
+    }
+  }
+}
+
+.card {
+  background: var(--cream); color: var(--ink); display: flex; flex-direction: column; transition: .35s;
+  &:hover { transform: translateY(-6px); box-shadow: 0 22px 40px rgba(0,0,0,.35); }
+  .media { aspect-ratio: 1 / 1; }
+  &__body { padding: 22px 22px 26px; display: flex; flex: 1; flex-direction: column; text-align: center; }
+  h3 { font-family: var(--serif); font-weight: 500; font-size: 21px; margin: 8px 0; color: var(--red-800); line-height: 1.25; }
+  p { font-size: 13.5px; color: var(--muted); margin: 0 0 18px; flex: 1; }
+  .btn { padding: 12px 20px; font-size: 10.5px; }
+}
+.tag { font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold-700); }
+
+// Mosaico de fotos extras (Natal)
+.mosaic {
+  position: relative; display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin-top: 28px;
+  .media { aspect-ratio: 1 / 1; transition: .4s; &:hover { filter: brightness(1.12); } }
+  @include down($bp-lg) { grid-template-columns: repeat(3, 1fr); }
+  @include down($bp-sm) { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}

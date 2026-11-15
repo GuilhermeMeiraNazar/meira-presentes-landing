@@ -1,0 +1,42 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.feature {
+  display: grid; grid-template-columns: 1fr 1fr; background: var(--cream-2);
+  @include down($bp-lg) { grid-template-columns: 1fr; }
+  &__visual { min-height: 520px; @include down($bp-lg) { min-height: 360px; } }
+  &__text {
+    padding: 72px clamp(32px, 6vw, 96px); display: flex; flex-direction: column; justify-content: center;
+    h2 { font-size: clamp(30px, 3.6vw, 44px); color: var(--red-800); margin: 14px 0 18px; }
+    p:not(.eyebrow) { color: var(--muted); margin: 0 0 32px; }
+    .btn { align-self: flex-start; }
+  }
+}
+
+// Vídeo da coleção de Natal (dentro da seção .season)
+.video-feature {
+  position: relative; display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 72px; align-items: center;
+  max-width: 900px; margin: 72px auto 0; padding-top: 72px; border-top: 1px solid rgba(243,212,147,.25);
+  &__player {
+    width: 100%; aspect-ratio: 9 / 16; background: #000; border: 1px solid var(--gold-400); box-shadow: 0 22px 40px rgba(0,0,0,.35);
+    video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  }
+  &__text {
+    .eyebrow { color: var(--gold-300); }
+    h3 { font-family: var(--serif); font-weight: 500; font-size: clamp(26px, 3vw, 36px); margin: 14px 0 16px; color: var(--cream); }
+    p:not(.eyebrow) { color: rgba(251,246,238,.8); margin: 0 0 30px; max-width: 460px; }
+  }
+  @include down($bp-md) {
+    grid-template-columns: minmax(0, 320px); gap: 32px; justify-content: center; text-align: center;
+    margin-top: 56px; padding-top: 56px;
+  }
+}
+
+.location {
+  background: var(--cream-2);
+  &__map {
+    border: 1px solid var(--gold-500); box-shadow: 0 18px 36px rgba(107,10,10,.18);
+    iframe { display: block; width: 100%; height: 420px; border: 0; @include down($bp-sm) { height: 320px; } }
+  }
+  .season__cta { margin-top: 36px; }
+}

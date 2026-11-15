@@ -1,0 +1,39 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.hero {
+  position: relative; color: var(--cream);
+  min-height: min(82vh, 760px);
+  display: grid; place-items: center; text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(228,182,94,.28), transparent 60%),
+    linear-gradient(160deg, var(--red-700), var(--red-900));
+  overflow: hidden;
+
+  &::before, &::after {
+    content: ""; position: absolute; border: 1px solid rgba(243,212,147,.35); border-radius: 50%;
+    @include down($bp-sm) { display: none; }
+  }
+  &::before { width: 760px; height: 760px; }
+  &::after { width: 880px; height: 880px; border-color: rgba(243,212,147,.15); }
+
+  &__content { position: relative; z-index: 1; padding: 80px 24px; max-width: 760px; }
+  .eyebrow { color: var(--gold-300); }
+  h1 {
+    font-size: clamp(40px, 6vw, 76px); line-height: 1.08; margin: 22px 0;
+    em { font-style: italic; @include gold-text; }
+  }
+  p:not(.eyebrow) { font-size: 16px; color: rgba(251,246,238,.85); max-width: 520px; margin: 0 auto 38px; }
+}
+.actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+.perks {
+  background: var(--cream-2); border-bottom: 1px solid rgba(154,106,28,.2);
+  &__grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    padding: 26px 0; text-align: center;
+    @include down($bp-lg) { grid-template-columns: repeat(2, 1fr); }
+  }
+  b { display: block; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--red-700); }
+  span { display: block; font-size: 13px; color: var(--muted); }
+}
