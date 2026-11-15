@@ -6,6 +6,7 @@
     "build": "npm run build:css && node scripts/convert-images.mjs",
     "convert-images": "node scripts/convert-images.mjs",
     "build:css": "sass --no-source-map --style=expanded styles/main.scss style.css",
+    "package:deploy": "node scripts/package-deploy.mjs",
     "watch:css": "sass --no-source-map --watch styles/main.scss style.css"
   },
   "dependencies": {
