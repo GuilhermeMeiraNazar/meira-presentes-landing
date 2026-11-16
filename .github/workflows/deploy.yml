@@ -39,6 +39,9 @@ jobs:
           cd "/opt/frontly/clients/$1/landing/app"
           git fetch --depth 1 origin main
           git reset --hard origin/main
+          WEBHOOK_TOKEN="$(sed -n 's/^ADS_WEBHOOK_TOKEN=//p' "/opt/frontly/clients/$1/crm/.env" | head -n 1)"
+          test -n "$WEBHOOK_TOKEN"
+          WEBHOOK_TOKEN="$WEBHOOK_TOKEN" node -e 'const fs = require("fs"); fs.writeFileSync("webhook-config.js", `window.MEIRA_WEBHOOK_TOKEN = ${JSON.stringify(process.env.WEBHOOK_TOKEN)};\n`);'
           npm ci --no-audit --no-fund
           npm run package:deploy
           echo "DEPLOY_OK:$1"
