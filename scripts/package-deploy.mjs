@@ -34,6 +34,9 @@ const entries = [
   'android-chrome-512x512.png',
   'media',
 ];
+// Criado apenas na VPS durante o provisionamento. Nunca versionar o token.
+if (fs.existsSync(path.join(root, 'webhook-config.js'))) entries.push('webhook-config.js');
+
 for (const entry of entries) {
   if (!fs.existsSync(path.join(root, entry))) {
     console.error(`package:deploy: arquivo obrigatório ausente: ${entry}`);
